@@ -227,13 +227,13 @@ def scrape_valaja():
 def main():
     print(f"Haetaan lounaslistat {TODAY_STR}...\n")
     ravintolat = [
-        scrape_tali(),
-        scrape_factory(),
-        scrape_iss("Ravintola Fero",   "https://ravintolapalvelut.iss.fi/fero/",             "10:30–13:30", "13,60 €"),
-        scrape_iss("Ravintola Fucina", "https://ravintolapalvelut.iss.fi/ravintola-fucina/", "10:30–13:30", "katso ravintolasta"),
-        scrape_lasihelmi(),
-        scrape_valaja(),
-    ]
+    scrape_lasihelmi(),
+    scrape_iss("Ravintola Fero",   "https://ravintolapalvelut.iss.fi/fero/",             "10:30–13:30", "13,60 €"),
+    scrape_iss("Ravintola Fucina", "https://ravintolapalvelut.iss.fi/ravintola-fucina/", "10:30–13:30", "katso ravintolasta"),
+    scrape_factory(),
+    scrape_valaja(),
+    scrape_tali(),
+]
     with open("lounaat.json", "w", encoding="utf-8") as f:
         json.dump({"paivitetty": datetime.now().isoformat(), "ravintolat": ravintolat},
                   f, ensure_ascii=False, indent=2)

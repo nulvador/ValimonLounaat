@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Päivän lounas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Suomi Golf ensisijaiset värit */
+      --blue:      #3136FF;
+      --green:     #00D2A0;
+
+      --bg:        #F4F4FA;
+      --bg-card:   #FFFFFF;
+      --ink:       #0D0E2A;
+      --ink-2:     #3D3E6B;
+      --ink-3:     #9A9BC0;
+      --accent:    #3136FF;
+      --accent-lt: #EEEEFF;
+      --border:    #D4D4F0;
+      --closed:    #78716C;
+      --tag-bg:    #EEEEFF;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:        #080920;
+        --bg-card:   #10122E;
+        --ink:       #E8E8FF;
+        --ink-2:     #9A9BC0;
+        --ink-3:     #3D3E6B;
+        --accent:    #00D2A0;
+        --accent-lt: #001A14;
+        --border:    #1E2050;
+        --closed:    #78716C;
+        --tag-bg:    #10122E;
+      }
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+      padding: 2rem 1rem 4rem;
+    }
+
+    header {
+      max-width: 860px;
+      margin: 0 auto 2.5rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      border-bottom: 1.5px solid var(--border);
+      padding-bottom: 1rem;
+    }
+
+    .site-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      color: var(--ink);
+      letter-spacing: -0.02em;
+    }
+
+    .site-date {
+      font-size: 0.85rem;
+      color: var(--ink-2);
+      font-weight: 300;
+    }
+
+    .cards {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: box-shadow 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .card-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--ink-2);
+    }
+
+    .meta-row svg {
+      width: 13px; height: 13px;
+      flex-shrink: 0;
+      stroke: var(--ink-3);
+    }
+
+    .price-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: #E6FFF9;
+      color: #007A5E;
+      border-radius: 20px;
+      padding: 0.2rem 0.6rem;
+      white-space: nowrap;
+      align-self: flex-start;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Ruokalista */
+    .menu-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .menu-item {
+      font-size: 0.88rem;
+      line-height: 1.45;
+      color: var(--ink);
+      padding-left: 0.9rem;
+      position: relative;
+    }
+
+    .menu-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #00D2A0;
+      opacity: 0.8;
+    }
+
+    .menu-item .kat {
+      font-size: 0.72rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--ink-3);
+      display: block;
+      margin-bottom: 0.1rem;
+    }
+
+    /* Suljettu-tila */
+    .closed-banner {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      color: var(--closed);
+      font-style: italic;
+      padding: 0.6rem 0;
+    }
+
+    /* Virhe */
+    .error-note {
+      font-size: 0.82rem;
+      color: var(--ink-3);
+      font-style: italic;
+    }
+
+    /* Päivitysaika */
+    .footer {
+      max-width: 860px;
+      margin: 2.5rem auto 0;
+      text-align: center;
+      font-size: 0.76rem;
+      color: var(--ink-3);
+    }
+
+    .footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .refresh-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--ink-2);
+      background: var(--tag-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 0.3rem 0.8rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.1s;
+    }
+
+    .refresh-btn:hover { background: var(--border); }
+
+    /* Loading skeleton */
+    .skeleton-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .skel {
+      background: var(--border);
+      border-radius: 4px;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* External link icon shown on hover */
+    .ext-link {
+      font-size: 0.72rem;
+      color: var(--ink-3);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      margin-top: auto;
+      padding-top: 0.4rem;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    .card:hover .ext-link { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<div style="text-align:right;padding:0.4rem 1.2rem 0;font-size:0;line-height:1;">
+  <span style="display:inline-block;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,#3136FF,#00D2A0);border-radius:20px;padding:0.2rem 0.7rem;">α alpha · testiversio</span>
+</div>
+<header>
+  <h1 class="site-title">Päivän lounas</h1>
+  <span class="site-date" id="header-date">–</span>
+</header>
+
+<div class="cards" id="cards">
+  <!-- Skeleton loaders -->
+  <div class="skeleton-card">
+    <div class="skel" style="height:22px;width:55%"></div>
+    <div class="skel" style="height:12px;width:40%"></div>
+    <div class="skel" style="height:1px;width:100%"></div>
+    <div class="skel" style="height:12px;width:90%"></div>
+    <div class="skel" style="height:12px;width:75%"></div>
+    <div class="skel" style="height:12px;width:82%"></div>
+  </div>
+  <div class="skeleton-card">
+    <div class="skel" style="height:22px;width:60%"></div>
+    <div class="skel" style="height:12px;width:35%"></div>
+    <div class="skel" style="height:1px;width:100%"></div>
+    <div class="skel" style="height:12px;width:85%"></div>
+    <div class="skel" style="height:12px;width:70%"></div>
+    <div class="skel" style="height:12px;width:90%"></div>
+    <div class="skel" style="height:12px;width:60%"></div>
+  </div>
+  <div class="skeleton-card">
+    <div class="skel" style="height:22px;width:50%"></div>
+    <div class="skel" style="height:12px;width:45%"></div>
+    <div class="skel" style="height:1px;width:100%"></div>
+    <div class="skel" style="height:12px;width:88%"></div>
+    <div class="skel" style="height:12px;width:72%"></div>
+    <div class="skel" style="height:12px;width:95%"></div>
+  </div>
+</div>
+
+<div class="footer">
+  <div id="update-time">Ladataan...</div>
+  <button class="refresh-btn" onclick="loadData()">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>
+    </svg>
+    Päivitä
+  </button>
+</div>
+
+<script>
+const DAYS_FI = ["sunnuntai","maanantai","tiistai","keskiviikko","torstai","perjantai","lauantai"];
+const MONTHS_FI = ["tammikuuta","helmikuuta","maaliskuuta","huhtikuuta","toukokuuta","kesäkuuta","heinäkuuta","elokuuta","syyskuuta","lokakuuta","marraskuuta","joulukuuta"];
+
+function formatDate(d) {
+  return `${DAYS_FI[d.getDay()]} ${d.getDate()}. ${MONTHS_FI[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+function formatTime(iso) {
+  const d = new Date(iso);
+  return `Päivitetty ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
+}
+
+// Parsee "Lounas: Broileria saltimboccaa" → {kat, ruoka}
+function parseItem(str) {
+  const idx = str.indexOf(": ");
+  if (idx > -1 && idx < 25) {
+    return { kat: str.slice(0, idx), ruoka: str.slice(idx + 2) };
+  }
+  return { kat: null, ruoka: str };
+}
+
+function renderCard(r) {
+  const card = document.createElement("div");
+  card.className = "card";
+
+  const isClosed = !!r.virhe;
+  const noMenu   = !r.virhe && r.ruoat.length === 0;
+
+  card.innerHTML = `
+    <div class="card-header">
+      <h2 class="card-name">${r.nimi}</h2>
+      ${r.hinta && !isClosed ? `<span class="price-tag">${r.hinta}</span>` : ""}
+    </div>
+    <div class="card-meta">
+      <div class="meta-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+        </svg>
+        ${r.auki}
+      </div>
+    </div>
+    <div class="divider"></div>
+    ${isClosed
+      ? `<div class="closed-banner">
+           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+             <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+           </svg>
+           ${r.virhe}
+         </div>`
+      : noMenu
+      ? `<p class="error-note">Ruokalista ei ole vielä saatavilla.</p>`
+      : `<ul class="menu-list">${r.ruoat.map(item => {
+           const p = parseItem(item);
+           return `<li class="menu-item">${p.kat ? `<span class="kat">${p.kat}</span>` : ""}${p.ruoka}</li>`;
+         }).join("")}</ul>`
+    }
+    <a class="ext-link" href="${r.url}" target="_blank" rel="noopener">
+      Avaa ravintolan sivu
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+      </svg>
+    </a>
+  `;
+
+  return card;
+}
+
+async function loadData() {
+  document.getElementById("update-time").textContent = "Ladataan...";
+
+  try {
+    // Lisää cache-buster jotta selain ei käytä vanhaa JSONia
+    const resp = await fetch(`lounaat.json?t=${Date.now()}`);
+    if (!resp.ok) throw new Error("Tiedostoa ei löydy");
+    const data = await resp.json();
+
+    // Otsikko
+    const now = new Date();
+    document.getElementById("header-date").textContent = formatDate(now);
+    document.getElementById("update-time").textContent = formatTime(data.paivitetty);
+
+    // Kortit
+    const container = document.getElementById("cards");
+    container.innerHTML = "";
+    data.ravintolat.forEach(r => container.appendChild(renderCard(r)));
+
+  } catch (e) {
+    document.getElementById("cards").innerHTML = `
+      <div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--ink-2)">
+        <p style="font-size:1rem;margin-bottom:0.5rem">Ruokalistan lataaminen epäonnistui.</p>
+        <p style="font-size:0.82rem;color:var(--ink-3)">Varmista että <code>scraper.py</code> on ajettu tänään ja <code>lounaat.json</code> on samassa kansiossa.</p>
+      </div>`;
+    document.getElementById("update-time").textContent = "Virhe: " + e.message;
+  }
+}
+
+// Käynnistys
+document.getElementById("header-date").textContent = formatDate(new Date());
+loadData();
+</script>
+
+</body>
+</html>

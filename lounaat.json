@@ -1,31 +1,24 @@
 {
-  "paivitetty": "2026-05-12T13:47:56.487703",
+  "paivitetty": "2026-05-12T14:25:59.547344",
   "ravintolat": [
     {
-      "nimi": "Talin Kartano",
-      "url": "https://www.ravintolatali.fi/lounas",
-      "auki": "11:00–14:00",
-      "hinta": "14,00 €",
+      "nimi": "Lasihelmi",
+      "url": "https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/helsinki/lasihelmi/",
+      "auki": "10:30–13:00",
+      "hinta": "13,40 €",
       "paiva": "12.5.2026",
       "ruoat": [
-        "(Ruokalista julkaistaan kuvana – katso ravintolan sivu)"
-      ],
-      "virhe": null,
-      "kuvalista": true
-    },
-    {
-      "nimi": "Factory Pitäjänmäki",
-      "url": "https://ravintolafactory.com/lounasravintolat/ravintolat/helsinki-pitajanmaki/",
-      "auki": "10:00–14:00",
-      "hinta": "13,70 €",
-      "paiva": "12.5.2026",
-      "ruoat": [
-        "Kermainen parsakaalisosekeitto",
-        "Riista-kebablastuja tomaatti-yrttikastikkeessa (M+G+VS) rapeat lohkoperunat (VE+G) kurkku-jogurtti",
-        "Friteeratut gluteenittomat Chicken 65 -kanapalat maustettuna Intian tyyliin (M+G+VS) basmatiriisi",
-        "Itse tehdyt pinaattiohukaiset (L) puolukkahillo",
-        "Chili sin carne mehevillä kaura-kasvis -suikaleilla",
-        "Factoryn jäätelöbaari"
+        "Tandoorikanaa jogurttikastikkeessa",
+        "Basmatiriisiä",
+        "Talon chilinen jauhelihapihvi",
+        "Paahdettua juustoperunaa",
+        "Chilimajo L,G,A",
+        "Meidän keittiön porkkana-lehtikaalipihvejä",
+        "Hernehummusta",
+        "Täyteläistä Tomaattikeittoa",
+        "Paahdettuja kasviksia L,M,G,Veg",
+        "Talon omenapiirakkaa L,M,A",
+        "Vaniljakermavaahtoa"
       ],
       "virhe": null
     },
@@ -62,23 +55,18 @@
       "virhe": null
     },
     {
-      "nimi": "Lasihelmi",
-      "url": "https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/helsinki/lasihelmi/",
-      "auki": "10:30–13:00",
-      "hinta": "13,40 €",
+      "nimi": "Factory Pitäjänmäki",
+      "url": "https://ravintolafactory.com/lounasravintolat/ravintolat/helsinki-pitajanmaki/",
+      "auki": "10:00–14:00",
+      "hinta": "13,70 €",
       "paiva": "12.5.2026",
       "ruoat": [
-        "Tandoorikanaa jogurttikastikkeessa",
-        "Basmatiriisiä",
-        "Talon chilinen jauhelihapihvi",
-        "Paahdettua juustoperunaa",
-        "Chilimajo L,G,A",
-        "Meidän keittiön porkkana-lehtikaalipihvejä",
-        "Hernehummusta",
-        "Täyteläistä Tomaattikeittoa",
-        "Paahdettuja kasviksia L,M,G,Veg",
-        "Talon omenapiirakkaa L,M,A",
-        "Vaniljakermavaahtoa"
+        "Kermainen parsakaalisosekeitto",
+        "Riista-kebablastuja tomaatti-yrttikastikkeessa (M+G+VS) rapeat lohkoperunat (VE+G) kurkku-jogurtti",
+        "Friteeratut gluteenittomat Chicken 65 -kanapalat maustettuna Intian tyyliin (M+G+VS) basmatiriisi",
+        "Itse tehdyt pinaattiohukaiset (L) puolukkahillo",
+        "Chili sin carne mehevillä kaura-kasvis -suikaleilla",
+        "Factoryn jäätelöbaari"
       ],
       "virhe": null
     },
@@ -98,6 +86,18 @@
         "From our bakery: Mango Lassi"
       ],
       "virhe": null
+    },
+    {
+      "nimi": "Talin Kartano",
+      "url": "https://www.ravintolatali.fi/lounas",
+      "auki": "11:00–14:00",
+      "hinta": "14,00 €",
+      "paiva": "12.5.2026",
+      "ruoat": [
+        "(Ruokalista julkaistaan kuvana – katso ravintolan sivu)"
+      ],
+      "virhe": null,
+      "kuvalista": true
     }
   ]
 }
