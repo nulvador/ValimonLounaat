@@ -52,7 +52,7 @@ def base(nimi, url, auki, hinta):
 
 # ── 1. Talin Kartano – kuvalista ─────────────────────────────────────────────
 def scrape_tali():
-    r = base("Talin Kartano", "https://www.ravintolatali.fi/lounas", "11:00–14:00", "14,00 €")
+    r = base("Talin Kartano", "https://www.ravintolatali.fi/lounas", "11:00–14:00", "15,00 €")
     r["ruoat"] = ["(Ruokalista julkaistaan kuvana – katso ravintolan sivu)"]
     r["kuvalista"] = True
     return r
@@ -62,7 +62,7 @@ def scrape_tali():
 # Rakenne: h3 "Tiistai 12.5.2026" → h3 (tyhjä) → p (kaikki ruoat yhdessä)
 def scrape_factory():
     url = "https://ravintolafactory.com/lounasravintolat/ravintolat/helsinki-pitajanmaki/"
-    r = base("Factory Pitäjänmäki", url, "10:00–14:00", "13,70 €")
+    r = base("Factory Pitäjänmäki", url, "10:00–14:00", "13,20 €")
     try:
         soup = fetch_html(url)
         paiva_h3 = None
@@ -165,7 +165,7 @@ def scrape_iss(nimi, url, auki, hinta):
 # Rakenne: h3 "Tiistai 12.5.2026" → section > h4 (buffet-otsikko) + ul > li (ruoat)
 def scrape_lasihelmi():
     url = "https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/helsinki/lasihelmi/"
-    r = base("Lasihelmi", url, "10:30–13:00", "13,40 €")
+    r = base("Lasihelmi", url, "10:30–13:00", "13,00 €")
     try:
         soup = fetch_html(url)
         paiva_h3 = None
@@ -227,13 +227,13 @@ def scrape_valaja():
 def main():
     print(f"Haetaan lounaslistat {TODAY_STR}...\n")
     ravintolat = [
-    scrape_lasihelmi(),
-    scrape_iss("Ravintola Fero",   "https://ravintolapalvelut.iss.fi/fero/",             "10:30–13:30", "13,60 €"),
-    scrape_iss("Ravintola Fucina", "https://ravintolapalvelut.iss.fi/ravintola-fucina/", "10:30–13:30", "katso ravintolasta"),
-    scrape_factory(),
-    scrape_valaja(),
-    scrape_tali(),
-]
+        scrape_tali(),
+        scrape_factory(),
+        scrape_iss("Ravintola Fero",   "https://ravintolapalvelut.iss.fi/fero/",             "10:30–13:30", "13,40 €"),
+        scrape_iss("Ravintola Fucina", "https://ravintolapalvelut.iss.fi/ravintola-fucina/", "10:30–13:30", "13,90 €"),
+        scrape_lasihelmi(),
+        scrape_valaja(),
+    ]
     with open("lounaat.json", "w", encoding="utf-8") as f:
         json.dump({"paivitetty": datetime.now().isoformat(), "ravintolat": ravintolat},
                   f, ensure_ascii=False, indent=2)

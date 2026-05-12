@@ -10,30 +10,34 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #F5F0E8;
-      --bg-card:   #FEFCF8;
-      --ink:       #1C1917;
-      --ink-2:     #57534E;
-      --ink-3:     #A8A29E;
-      --accent:    #C2410C;
-      --accent-lt: #FEF3EE;
-      --border:    #E7E0D5;
+      /* Suomi Golf ensisijaiset värit */
+      --blue:      #3136FF;
+      --green:     #00D2A0;
+
+      --bg:        #F4F4FA;
+      --bg-card:   #FFFFFF;
+      --ink:       #0D0E2A;
+      --ink-2:     #3D3E6B;
+      --ink-3:     #9A9BC0;
+      --accent:    #3136FF;
+      --accent-lt: #EEEEFF;
+      --border:    #D4D4F0;
       --closed:    #78716C;
-      --tag-bg:    #F0EBE3;
+      --tag-bg:    #EEEEFF;
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg:        #1C1917;
-        --bg-card:   #292524;
-        --ink:       #F5F0E8;
-        --ink-2:     #A8A29E;
-        --ink-3:     #57534E;
-        --accent:    #FB923C;
-        --accent-lt: #2C1A0E;
-        --border:    #3C3532;
+        --bg:        #080920;
+        --bg-card:   #10122E;
+        --ink:       #E8E8FF;
+        --ink-2:     #9A9BC0;
+        --ink-3:     #3D3E6B;
+        --accent:    #00D2A0;
+        --accent-lt: #001A14;
+        --border:    #1E2050;
         --closed:    #78716C;
-        --tag-bg:    #292524;
+        --tag-bg:    #10122E;
       }
     }
 
@@ -130,8 +134,8 @@
     .price-tag {
       font-size: 0.75rem;
       font-weight: 500;
-      background: var(--accent-lt);
-      color: var(--accent);
+      background: #E6FFF9;
+      color: #007A5E;
       border-radius: 20px;
       padding: 0.2rem 0.6rem;
       white-space: nowrap;
@@ -167,8 +171,8 @@
       width: 4px;
       height: 4px;
       border-radius: 50%;
-      background: var(--accent);
-      opacity: 0.6;
+      background: #00D2A0;
+      opacity: 0.8;
     }
 
     .menu-item .kat {
@@ -272,6 +276,9 @@
 </head>
 <body>
 
+<div style="text-align:right;padding:0.4rem 1.2rem 0;font-size:0;line-height:1;">
+  <span style="display:inline-block;font-size:0.65rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:linear-gradient(90deg,#3136FF,#00D2A0);border-radius:20px;padding:0.2rem 0.7rem;">α alpha · testiversio</span>
+</div>
 <header>
   <h1 class="site-title">Päivän lounas</h1>
   <span class="site-date" id="header-date">–</span>
