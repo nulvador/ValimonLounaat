@@ -333,7 +333,11 @@ function formatDate(d) {
 
 function formatTime(iso) {
   const d = new Date(iso);
-  return `Päivitetty ${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
+  const days = ["su","ma","ti","ke","to","pe","la"];
+  const day = days[d.getDay()];
+  const date = `${d.getDate()}.${d.getMonth()+1}.${d.getFullYear()}`;
+  const time = `${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
+  return `Päivitetty ${day} ${date} klo ${time}`;
 }
 
 // Parsee "Lounas: Broileria saltimboccaa" → {kat, ruoka}
