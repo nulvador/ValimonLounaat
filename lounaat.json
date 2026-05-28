@@ -1,5 +1,5 @@
 {
-  "paivitetty": "2026-05-28T10:07:00.574783",
+  "paivitetty": "2026-05-28T11:00:01.037981",
   "ravintolat": [
     {
       "nimi": "Lasihelmi",
@@ -43,8 +43,14 @@
       "auki": "10:30–13:30",
       "hinta": "13,90 €",
       "paiva": "28.5.2026",
-      "ruoat": [],
-      "virhe": "Page.inner_text: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"body\")\n"
+      "ruoat": [
+        "Keitto: Sitruunainen parsakeitto",
+        "Lounas: Jauhelihalasagne L, Sahramilla maustettua äyriäisrisottoa L,G Munakasrulla yrttijuurestäytteellä L,G",
+        "Lounas: Kasvisvaihtoehto",
+        "Lounas: Shani Paneer \"Juustoa tomaatti-pähkinäkastikkeessa\"",
+        "Jälkiruoka: Vadelmainen chia-kerrosjogurtti"
+      ],
+      "virhe": null
     },
     {
       "nimi": "Factory Pitäjänmäki",
