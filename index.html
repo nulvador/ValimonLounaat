@@ -272,6 +272,165 @@
     }
 
     .card:hover .ext-link { opacity: 1; }
+  
+    /* Äänestyspainike – kortin oikeassa yläkulmassa */
+    .vote-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      font-family: inherit;
+      color: #fff;
+      background: linear-gradient(90deg, #3136FF, #00D2A0);
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.15s;
+      box-shadow: 0 2px 8px rgba(49,54,255,0.25);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .vote-btn:hover { 
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(49,54,255,0.35);
+    }
+    .vote-btn.voted {
+      background: var(--green);
+      box-shadow: 0 2px 8px rgba(0,210,160,0.3);
+    }
+    .vote-count {
+      margin-left: 0.3rem;
+      font-weight: 600;
+      opacity: 0.8;
+    }
+
+    /* Sivupaneeli äänet */
+    .votes-panel {
+      position: fixed;
+      top: 50%;
+      right: 1rem;
+      transform: translateY(-50%);
+      width: 220px;
+      max-height: 70vh;
+      overflow-y: auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      z-index: 100;
+    }
+    .votes-panel-title {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 0.7rem;
+    }
+    .votes-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }
+    .votes-row:last-child { border-bottom: none; }
+    .votes-row .restaurant { color: var(--ink); font-weight: 500; }
+    .votes-row .count {
+      color: var(--accent);
+      font-weight: 600;
+      background: var(--accent-lt);
+      padding: 0.1rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+    }
+    .votes-row .voters {
+      flex-basis: 100%;
+      font-size: 0.7rem;
+      color: var(--ink-2);
+      margin-top: 0.2rem;
+    }
+    .my-vote-row {
+      margin-top: 0.7rem;
+      padding-top: 0.7rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--ink-2);
+    }
+    .my-vote-row button {
+      margin-top: 0.4rem;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--ink-2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .my-vote-row button:hover { background: var(--accent-lt); color: var(--accent); }
+
+    @media (max-width: 900px) {
+      .votes-panel {
+        position: static;
+        transform: none;
+        width: 100%;
+        max-width: 860px;
+        margin: 1.5rem auto 0;
+      }
+    }
+
+    /* Nimimerkki-dialogi */
+    .name-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.4);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 200;
+    }
+    .name-dialog {
+      background: var(--bg-card);
+      padding: 1.5rem;
+      border-radius: 14px;
+      max-width: 320px;
+      width: 90%;
+    }
+    .name-dialog h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .name-dialog p {
+      font-size: 0.82rem;
+      color: var(--ink-2);
+      margin-bottom: 1rem;
+    }
+    .name-dialog input {
+      width: 100%;
+      padding: 0.5rem 0.7rem;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--ink);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      margin-bottom: 0.7rem;
+    }
+    .name-dialog button {
+      width: 100%;
+      padding: 0.5rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
   </style>
 </head>
 <body>
@@ -323,7 +482,186 @@
   </button>
 </div>
 
+
+<aside class="votes-panel" id="votes-panel">
+  <div class="votes-panel-title">Tämän päivän äänet</div>
+  <div id="votes-list">Ladataan...</div>
+</aside>
+
 <script>
+// JSONBin.io konfiguraatio
+const JSONBIN_KEY = "$2a$10$eWwwr4pvcTPf2AnGaTCyR.uGVJTxdGj8k4aIxIMDHTuEZCLjpwMoe";
+const JSONBIN_BIN = "6a18048021f9ee59d2948deb";
+const JSONBIN_URL = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN}`;
+
+function todayKey() {
+  const d = new Date();
+  return `${d.getFullYear()}-${(d.getMonth()+1).toString().padStart(2,'0')}-${d.getDate().toString().padStart(2,'0')}`;
+}
+
+function getNickname() {
+  return localStorage.getItem('lounas_nick');
+}
+
+function setNickname(name) {
+  localStorage.setItem('lounas_nick', name);
+}
+
+async function fetchVotes() {
+  try {
+    const r = await fetch(JSONBIN_URL + '/latest', {
+      headers: { 'X-Master-Key': JSONBIN_KEY }
+    });
+    const data = await r.json();
+    return data.record.votes || {};
+  } catch (e) {
+    console.error('Äänten haku epäonnistui:', e);
+    return {};
+  }
+}
+
+async function saveVotes(votes) {
+  try {
+    await fetch(JSONBIN_URL, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Master-Key': JSONBIN_KEY
+      },
+      body: JSON.stringify({ votes })
+    });
+  } catch (e) {
+    console.error('Äänen tallennus epäonnistui:', e);
+  }
+}
+
+async function vote(restaurantName) {
+  let nick = getNickname();
+  if (!nick) {
+    nick = await askNickname();
+    if (!nick) return;
+  }
+  
+  const allVotes = await fetchVotes();
+  const today = todayKey();
+  if (!allVotes[today]) allVotes[today] = {};
+  
+  // Poista käyttäjän aiempi ääni miltä tahansa ravintolalta
+  for (const r in allVotes[today]) {
+    allVotes[today][r] = allVotes[today][r].filter(n => n !== nick);
+    if (allVotes[today][r].length === 0) delete allVotes[today][r];
+  }
+  // Lisää uusi ääni
+  if (!allVotes[today][restaurantName]) allVotes[today][restaurantName] = [];
+  allVotes[today][restaurantName].push(nick);
+  
+  await saveVotes(allVotes);
+  renderVotes();
+  updateVoteButtons();
+}
+
+async function removeVote() {
+  const nick = getNickname();
+  if (!nick) return;
+  
+  const allVotes = await fetchVotes();
+  const today = todayKey();
+  if (allVotes[today]) {
+    for (const r in allVotes[today]) {
+      allVotes[today][r] = allVotes[today][r].filter(n => n !== nick);
+      if (allVotes[today][r].length === 0) delete allVotes[today][r];
+    }
+  }
+  await saveVotes(allVotes);
+  renderVotes();
+  updateVoteButtons();
+}
+
+function askNickname() {
+  return new Promise(resolve => {
+    const overlay = document.createElement('div');
+    overlay.className = 'name-overlay';
+    overlay.innerHTML = `
+      <div class="name-dialog">
+        <h3>Anna nimimerkki</h3>
+        <p>Käytetään äänestyksessä, näkyy muille.</p>
+        <input id="nick-input" type="text" placeholder="esim. nuutti" maxlength="20" autofocus />
+        <button id="nick-save">Tallenna</button>
+      </div>`;
+    document.body.appendChild(overlay);
+    const input = overlay.querySelector('#nick-input');
+    const save = () => {
+      const val = input.value.trim();
+      if (val) {
+        setNickname(val);
+        overlay.remove();
+        resolve(val);
+      }
+    };
+    overlay.querySelector('#nick-save').onclick = save;
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') save(); });
+    input.focus();
+  });
+}
+
+async function renderVotes() {
+  const votes = await fetchVotes();
+  const today = todayKey();
+  const todayVotes = votes[today] || {};
+  const nick = getNickname();
+  
+  const sorted = Object.entries(todayVotes).sort((a,b) => b[1].length - a[1].length);
+  const list = document.getElementById('votes-list');
+  
+  if (sorted.length === 0) {
+    list.innerHTML = '<div style="font-size:0.78rem;color:var(--ink-3);font-style:italic">Ei vielä ääniä tänään.</div>';
+  } else {
+    list.innerHTML = sorted.map(([r, voters]) => `
+      <div class="votes-row">
+        <span class="restaurant">${r}</span>
+        <span class="count">${voters.length}</span>
+        <span class="voters">${voters.join(', ')}</span>
+      </div>
+    `).join('');
+  }
+  
+  // Oma ääni ja poistonappi
+  if (nick) {
+    let myVote = null;
+    for (const [r, voters] of Object.entries(todayVotes)) {
+      if (voters.includes(nick)) { myVote = r; break; }
+    }
+    const myRow = document.createElement('div');
+    myRow.className = 'my-vote-row';
+    if (myVote) {
+      myRow.innerHTML = `<div>Sinä (${nick}): <strong>${myVote}</strong></div>
+        <button onclick="removeVote()">Poista ääneni</button>`;
+    } else {
+      myRow.innerHTML = `<div>Sinä: ${nick} (ei äänestetty)</div>`;
+    }
+    list.appendChild(myRow);
+  }
+}
+
+function updateVoteButtons() {
+  const nick = getNickname();
+  const cards = document.querySelectorAll('.card');
+  fetchVotes().then(votes => {
+    const todayVotes = votes[todayKey()] || {};
+    cards.forEach(card => {
+      const btn = card.querySelector('.vote-btn');
+      if (!btn) return;
+      const rName = btn.dataset.restaurant;
+      const voters = todayVotes[rName] || [];
+      const isMyVote = nick && voters.includes(nick);
+      btn.classList.toggle('voted', isMyVote);
+      btn.innerHTML = isMyVote
+        ? `✓ Äänestit <span class="vote-count">(${voters.length})</span>`
+        : `Äänestä <span class="vote-count">${voters.length > 0 ? '(' + voters.length + ')' : ''}</span>`;
+    });
+  });
+}
+
 const DAYS_FI = ["sunnuntai","maanantai","tiistai","keskiviikko","torstai","perjantai","lauantai"];
 const MONTHS_FI = ["tammikuuta","helmikuuta","maaliskuuta","huhtikuuta","toukokuuta","kesäkuuta","heinäkuuta","elokuuta","syyskuuta","lokakuuta","marraskuuta","joulukuuta"];
 
@@ -359,8 +697,11 @@ function renderCard(r) {
   card.innerHTML = `
     <div class="card-header">
       <h2 class="card-name">${r.nimi}</h2>
-      ${r.hinta && !isClosed ? `<span class="price-tag">${r.hinta}</span>` : ""}
+      ${!isClosed ? `<button class="vote-btn" data-restaurant="${r.nimi}" onclick="vote('${r.nimi.replace(/'/g, "\\'")}'); event.stopPropagation();">
+        Äänestä <span class="vote-count"></span>
+      </button>` : ""}
     </div>
+    ${r.hinta && !isClosed ? `<div style="margin-top:-0.3rem;"><span class="price-tag">${r.hinta}</span></div>` : ""}
     <div class="card-meta">
       <div class="meta-row">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -426,7 +767,12 @@ async function loadData() {
 
 // Käynnistys
 document.getElementById("header-date").textContent = formatDate(new Date());
-loadData();
+loadData().then(() => {
+  renderVotes();
+  updateVoteButtons();
+  // Päivitä äänet joka 15 sekunti
+  setInterval(() => { renderVotes(); updateVoteButtons(); }, 15000);
+});
 </script>
 
 </body>
