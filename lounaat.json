@@ -1,21 +1,21 @@
 {
-  "paivitetty": "2026-06-29T10:00:27.605722",
+  "paivitetty": "2026-06-30T10:00:25.644629",
   "ravintolat": [
     {
       "nimi": "Lasihelmi",
       "url": "https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/helsinki/lasihelmi/",
       "auki": "10:30–13:00",
       "hinta": "13,00 €",
-      "paiva": "29.6.2026",
+      "paiva": "30.6.2026",
       "ruoat": [
-        "Rapeaa kanaa Gochujang",
-        "Parmesanmajoneesia",
-        "Riisiä",
-        "Kirjolohi-parsakaalipiirakka",
-        "Tofua, kasviksia ja pähkinää",
-        "Purjo-perunasosekeittoa",
-        "Paahdettuja kasviksia L,M,G,Veg",
-        "Mustikkarahkaa"
+        "Lihapullia tomaatti-cashew-kotijuustokastikkeessa",
+        "Paahdettua juustoperunaa",
+        "Täyteläisen maustettua broileria - Broileria Tikka Masala",
+        "Basmatiriisiä",
+        "Juusto-kasvispizzaa",
+        "Mausteista linssisosekeittoa",
+        "Omena-luomukaurapaistosta",
+        "Vaniljakermavaahtoa"
       ],
       "virhe": null
     },
@@ -24,13 +24,13 @@
       "url": "https://ravintolapalvelut.iss.fi/fero/",
       "auki": "10:30–13:30",
       "hinta": "13,40 €",
-      "paiva": "29.6.2026",
+      "paiva": "30.6.2026",
       "ruoat": [
-        "Lounas: Sitrus-linssicurrya ja basmatiriisiä",
-        "Lounas: Feron ruispaneroitua kampelaa, yrttiperunoita ja tilli-kermaviilikastiketta",
-        "Lounas: Paahdettua kanaa sitruuna-timjamikastikkeessa ja yrttiperunoita",
-        "Keitto: Fenkoli-appelsiiniikeittoa",
-        "Jälkiruoka: Raparperi-vaniljarahkaa",
+        "Lounas: Kirsikkatomaatti-Quornipastaa",
+        "Lounas: Feron lihapullia konjakki-kermakastikkeessa ja paahdettuja perunoita",
+        "Lounas: Fish&Chips, herneitä ja tartar-kastiketta",
+        "Keitto: Paahdettua Omena-sellerikeittoa",
+        "Jälkiruoka: Mokkapaloja (saatavana gluteeniton jälkiruoka)",
         "Salaatti: Caesar kana-salaatti/ Kreikkalainen-salaatti",
         "Burgeri: Tuplajuustoburgeri, ranskalaisia ja majoneesia",
         "A La Carte: Lehtipihvi, Feron maustevoita ja ranskalaisia"
@@ -42,18 +42,18 @@
       "url": "https://ravintolapalvelut.iss.fi/ravintola-fucina/",
       "auki": "10:30–13:30",
       "hinta": "13,90 €",
-      "paiva": "29.6.2026",
+      "paiva": "30.6.2026",
       "ruoat": [
-        "Keitto: Kukkakaalisosekeittoa",
-        "Lounas: Italialaiset lihapyörykät Salvia-tomaattikastikeessa",
-        "Lounas: Merellinen tagine",
-        "Lounas: Pastaa &riisiä",
-        "Lounas: Paahdettua sipulia ja porkkanaa",
+        "Keitto: Paahdettua paprikakeittoa",
+        "Lounas: Kanacurry",
+        "Lounas: Smörrekuorrutettua puna-ahventa",
+        "Lounas: Pecorino-viikuna tuorepasta",
+        "Lounas: Perunasosetta & kukkakaaligratiinia",
         "Lounas: Kasvisvaihtoehto",
-        "Lounas: Ribollita di tofu e verdure (Tofu- kasvismuhennos)",
+        "Lounas: Halloumi-kasvislasagnea",
         "Lounas: Pizza",
-        "Lounas: Pizza Margherita & Pizza Nduja",
-        "Jälkiruoka: Tiramisuvaahtoa"
+        "Lounas: Pizza Margherita & Pizza Pollo Gorgonzola",
+        "Jälkiruoka: Omenapiirakkaa talon tapaan & kardemummavaahtoa"
       ],
       "virhe": null
     },
@@ -62,14 +62,15 @@
       "url": "https://ravintolafactory.com/lounasravintolat/ravintolat/helsinki-pitajanmaki/",
       "auki": "10:00–14:00",
       "hinta": "13,20 €",
-      "paiva": "29.6.2026",
+      "paiva": "30.6.2026",
       "ruoat": [
-        "Valkoviinillä höystetty purjo-perunasosekeitto",
-        "Paistettua lohta talon pestokuorrutuksella (M+G+VS) perunamuusi (L+G) tilli-kermaviili",
-        "Paahdettuja uunimakkaroita sinappi-juustokastikkeella (VL+G) suolakurkku",
-        "Chicken à la King – Kanaa kuninkaallisessa kermakastikkeessa (L+G+VS) basmatiriisi",
-        "Grillattuja kasviksia ja rapeaksi paistettua sriracha-tofua korianteri-valkosipuliöljyllä",
-        "Talon banaani-pannukakkua (L) mansikkahillo (VE+G) vaniljavaahtoa"
+        "Täyteläinen Koskenlaskija-juureskeitto",
+        "Factoryn lihapullat mummon ruskeassa kastikkeessa (L+G) perunamuusi",
+        "Gluteenitomat paneroidut kanan fileebitesit (M+G+VS) basmatiriisi (VE+G) aioli",
+        "Smetanalla maustettu graavilohi kiusaus reilulla tillillä",
+        "Itse tehdyt pinaattiohukaiset (L) puolukkahillo",
+        "Paistetulla Härkiksellä höystetty provencen ratatouille tuoreilla yrteillä",
+        "Factoryn jäätelöbaari"
       ],
       "virhe": null
     },
@@ -78,14 +79,14 @@
       "url": "https://www.sodexo.fi/ravintolat/ravintola-valaja",
       "auki": "10:30–13:00",
       "hinta": "14,00 €",
-      "paiva": "29.6.2026",
+      "paiva": "30.6.2026",
       "ruoat": [
-        "Buffet: Broilerin filettä pippurikastikkeella ja paahdettuja perunoita",
-        "Buffet: Linguine Bolognese, rucolaa & pinaattia sekä parmesanjuustoa",
-        "Buffet: Vegaaniset italialaiset pyörykät tomaattikastikkeessa ja pastaa",
+        "Buffet: chili",
+        "Buffet: Bellmanninpannu ja maustekurkkua",
+        "Buffet: Mausteinen linssipata, korianterisoijajogurttia ja bataattilohkoja",
         "Deli Salaatti: Delisalaatti vaihtuvista & monipuolisista kasviksista ja joka päivä vähintään 2 erilaista proteiinia",
-        "Päivän kasviskeitto: Pinaattikeittoa ja kananmunaa",
-        "From our bakery: Vaniljajäätelöä, mansikkajäätelöä ja -sorbettia & vastuullista kahvia sekä teetä"
+        "Päivän kasviskeitto: Tomaatti-vuohenjuustokeittoa",
+        "From our bakery: Mousse maitosuklaasta & popcornista, sekä vastuullista kahvia & teetä"
       ],
       "virhe": null
     },
@@ -94,7 +95,7 @@
       "url": "https://www.ravintolatali.fi/lounas",
       "auki": "11:00–14:00",
       "hinta": "15,00 €",
-      "paiva": "29.6.2026",
+      "paiva": "30.6.2026",
       "ruoat": [
         "(Ruokalista julkaistaan kuvana – katso ravintolan sivu)"
       ],
