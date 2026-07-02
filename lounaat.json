@@ -1,22 +1,23 @@
 {
-  "paivitetty": "2026-07-01T10:00:42.592370",
+  "paivitetty": "2026-07-02T10:00:34.543374",
   "ravintolat": [
     {
       "nimi": "Lasihelmi",
       "url": "https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/helsinki/lasihelmi/",
       "auki": "10:30–13:00",
       "hinta": "13,00 €",
-      "paiva": "1.7.2026",
+      "paiva": "2.7.2026",
       "ruoat": [
-        "Jauheliha-burritos L,A,VS",
-        "Tomaattisalsaa",
-        "Turkkilaista jogurttia L,G,A",
-        "Paahdettua kirjolohta",
-        "Tartarkastiketta",
-        "Keitettyjä varhaisperunoita",
-        "Herkkusieni-punasipulipastaa, pinaattia ja halloumjuustoa A,ILM,L,VS",
-        "Herkkusienikeittoa",
-        "Suklaamoussea, kinuskia ja pähkinää"
+        "Broilerin fileetä",
+        "Chimichurria",
+        "Juustoista jauheliha-pastapannua",
+        "Meidän keittiön pähkinäisiä kukkakaali-emmentalpihvejä",
+        "Aiolia",
+        "Paahdettuja lohkoperunoita",
+        "Hernesosekeittoa L,G,A",
+        "Meidän keittiön pannukakkua",
+        "Mansikkahilloa",
+        "Kermavaahtoa"
       ],
       "virhe": null
     },
@@ -25,13 +26,13 @@
       "url": "https://ravintolapalvelut.iss.fi/fero/",
       "auki": "10:30–13:30",
       "hinta": "13,40 €",
-      "paiva": "1.7.2026",
+      "paiva": "2.7.2026",
       "ruoat": [
-        "Lounas: Mifu-linssipataa ja kurkumariisiä",
-        "Lounas: Pasta Bolognesea ja parmesania",
-        "Lounas: Maapähkinäbroileria,kurkumariisiä ja hedelmäistä aiolia (saatavana gluteenittomana)",
-        "Keitto: Mustajuurikeittoa",
-        "Jälkiruoka: Suklaa-marjamoussea (laktoositon jälkiruoka)",
+        "Lounas: Punajuuri-falafelejä ja paprikariisiä",
+        "Lounas: Rapeaa kananrintaa, paahdettuja perunoita ja chili-aiolia",
+        "Lounas: Pippuri-smetanahärkää Feron tapaan ja paahdettuja perunoita",
+        "Keitto: Porkkanasosekeittoa",
+        "Jälkiruoka: Talon pannukakkua, hilloa ja kermavaahtoa (saatavana gluteenittomia lettuja)",
         "Salaatti: Caesar kana-salaatti/ Kreikkalainen-salaatti",
         "Burgeri: Tuplajuustoburgeri, ranskalaisia ja majoneesia",
         "A La Carte: Lehtipihvi, Feron maustevoita ja ranskalaisia"
@@ -43,18 +44,18 @@
       "url": "https://ravintolapalvelut.iss.fi/ravintola-fucina/",
       "auki": "10:30–13:30",
       "hinta": "13,90 €",
-      "paiva": "1.7.2026",
+      "paiva": "2.7.2026",
       "ruoat": [
-        "Keitto: Bataatti-kurpitsasosekeitto",
-        "Lounas: Salsiccia alle erbe mediterranee, (Yrttimakkaraa)",
-        "Lounas: Kanapyörykät Marsala-kastikkeella",
-        "Lounas: Salviavoissa paistettuja perunagnocceja & spaghettia",
-        "Lounas: Juuresfrittata savujuustolla",
+        "Keitto: Herkkusienikeittoa",
+        "Lounas: Toscanalaista kanaa",
+        "Lounas: Valkosipuliperunat",
+        "Lounas: Paahdettua paprikaa, sipulia ja kirsikkatomaattia",
+        "Lounas: Tomaatti-rucolarisottoa",
         "Lounas: Kasvisvaihtoehto",
-        "Lounas: Polpette di spinaci ripiene rndi formaggio (Tuorejuustolla täytettyjä pinaattipihvejä)",
+        "Lounas: Linssimureketta & romescokastiketta",
         "Lounas: Pizza",
-        "Lounas: Pizza Margherita & Pizza Salmone",
-        "Jälkiruoka: Kuningatarrahkaa"
+        "Lounas: Pizza Margherita & Pizza Fico",
+        "Jälkiruoka: Ruusunmarjapannacotta"
       ],
       "virhe": null
     },
@@ -63,13 +64,14 @@
       "url": "https://ravintolafactory.com/lounasravintolat/ravintolat/helsinki-pitajanmaki/",
       "auki": "10:00–14:00",
       "hinta": "13,20 €",
-      "paiva": "1.7.2026",
+      "paiva": "2.7.2026",
       "ruoat": [
-        "Thaimaalainen rapu-kookoskeitto",
-        "Tee-se-itse BBQ-pekonihampurilaiset: pihvi (M+G+VS) sämpylä (VE) ranskalaiset (VE+G) marinoitu sipuli (VE+G) cheddarjuustokastike (L+G) kurkku-paprika dippi (VE+G) suolakurkku",
-        "Rapeaksi paistettua tex mex -paneroitua seitiä (M+VS) ranskalaiset (VE+G) kurkku-paprika dippi",
-        "Kvinoa-kasvisröstit tofumurulla ja tahinilla maustettuna (VE+VS) paprikadippi",
-        "Raikas mango-passionrahka"
+        "Hernekeitto (M+G) pilkottua sipulia",
+        "Hitaasti kypsennettyä naudanpaistia kermaisella pippurikastikkeella (L+G+VS) timjamiperunat",
+        "Rapeaksi paistettua kanaa Cordon Bleu (VL) valkosipuli-jogurtti (L+G) basmatiriisi",
+        "Intialainen mausteinen kananmunacurry tuoreella korianterilla",
+        "Grillattuja tuoreita kasviksia ja savutofua chilillä ja yrttiöljyllä",
+        "Factoryn letut (L) oman keittiön mansikkahillo (VE+G) vaniljavaahto (L+G) jäätelö"
       ],
       "virhe": null
     },
@@ -78,14 +80,14 @@
       "url": "https://www.sodexo.fi/ravintolat/ravintola-valaja",
       "auki": "10:30–13:00",
       "hinta": "14,00 €",
-      "paiva": "1.7.2026",
+      "paiva": "2.7.2026",
       "ruoat": [
-        "Buffet: Rapeaa leivitettyä possua, aasian BBQ kastiketta, marinoitua kaalia & kurkkua, jasminriisiä & tuoreita yrttejä",
-        "Buffet: Pestokuorrutettu turska ja lämmin jyväpastasalaatti",
-        "Buffet: Kikherne-kukkakaalicurry ja jasminriisiä",
+        "Buffet: Valajan Butter Chicken lisukkeineen, basmatiriisiä & linssimuhennosta",
+        "Buffet: Peltipizzoja: Salami & punasipuli, sekä Kebab & smetana",
+        "Buffet: Quornpihvejä jugurttiraidalla",
         "Deli Salaatti: Delisalaatti vaihtuvista & monipuolisista kasviksista ja joka päivä vähintään 2 erilaista proteiinia",
-        "Päivän kasviskeitto: Kevätsipuli-perunasosekeittoa",
-        "From our bakery: Omena -kaurapiirakkaa vaniljakastikkeella, sekä vastuullista kahvia & teetä"
+        "Päivän kasviskeitto: Bataattisosekeittoa",
+        "From our bakery: Letut kermavaahdolla & hillolla, sekä vastuullista kahvia & teetä"
       ],
       "virhe": null
     },
@@ -94,7 +96,7 @@
       "url": "https://www.ravintolatali.fi/lounas",
       "auki": "11:00–14:00",
       "hinta": "15,00 €",
-      "paiva": "1.7.2026",
+      "paiva": "2.7.2026",
       "ruoat": [
         "(Ruokalista julkaistaan kuvana – katso ravintolan sivu)"
       ],
