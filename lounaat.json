@@ -1,21 +1,13 @@
 {
-  "paivitetty": "2026-07-03T10:00:25.948868",
+  "paivitetty": "2026-07-06T10:00:26.320998",
   "ravintolat": [
     {
       "nimi": "Lasihelmi",
       "url": "https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/helsinki/lasihelmi/",
       "auki": "10:30–13:00",
       "hinta": "13,00 €",
-      "paiva": "3.7.2026",
-      "ruoat": [
-        "Rapea porsaanleike",
-        "Pippuri-kermakastiketta",
-        "Kermaperunoita",
-        "Katkarapu-parsakaalipasta",
-        "Maustettua nyhtökauraa ja kevätsipulia, tortillaa ja tacoja",
-        "Kukkakaalisosekeittoa",
-        "Food & Co Jäätelöbuffet"
-      ],
+      "paiva": "6.7.2026",
+      "ruoat": [],
       "virhe": null
     },
     {
@@ -23,16 +15,26 @@
       "url": "https://ravintolapalvelut.iss.fi/fero/",
       "auki": "10:30–13:30",
       "hinta": "13,40 €",
-      "paiva": "3.7.2026",
+      "paiva": "6.7.2026",
       "ruoat": [
-        "Lounas: Kolmen juuston gnocchivuokaa",
-        "Lounas: Kevätsipulilla kuorrutettua lohta ja paahdettuja perunoita",
-        "Lounas: Hodaribuffet talon majoneeseilla ja lisukkeilla",
-        "Keitto: Kermaista kasvis-sosekeittoa",
-        "Jälkiruoka: Jäätelöbuffet herkkulisukkeilla",
-        "Salaatti: Caesar kana-salaatti/ Kreikkalainen-salaatti",
-        "Burgeri: Tuplajuustoburgeri, ranskalaisia ja majoneesia",
-        "A La Carte: Lehtipihvi, Feron maustevoita ja ranskalaisia"
+        "Lounas: Ravintolan myyntipalvelun puhelinnumero:",
+        "Lounas: 050 400 9465",
+        "Lounas: fero@iss.fi",
+        "Lounas: Ravintolan Instagram:",
+        "Lounas: @ravintolafero",
+        "Lounas: Fero kokoustarjoilu valikoima 2025",
+        "Lounas: OIVAllista tarjontaa ISS-ravintoloissa",
+        "Lounas: Valimotie 9-11 kokoustilat",
+        "Lounas: Terveellinen lounas tukee hyvinvointia",
+        "Lounas: Kansainvälinen kokemus,",
+        "Lounas: skandinaavinen näkemys,",
+        "Lounas: paikallinen elämys​",
+        "Lounas: Yhteystiedot",
+        "Lounas: Avoimet työpaikat",
+        "Lounas: ISS yrityksenä",
+        "Lounas: OIVA Raportit",
+        "Lounas: Tietosuojaseloste",
+        "Lounas: Saavutettavuusseloste"
       ],
       "virhe": null
     },
@@ -41,18 +43,18 @@
       "url": "https://ravintolapalvelut.iss.fi/ravintola-fucina/",
       "auki": "10:30–13:30",
       "hinta": "13,90 €",
-      "paiva": "3.7.2026",
+      "paiva": "6.7.2026",
       "ruoat": [
-        "Keitto: Karamellisoitua porkkanasosekeittoa",
-        "Lounas: Nyhtöpossugremolataa",
-        "Lounas: Katkarapupasta",
-        "Lounas: Spagettia",
-        "Lounas: Sitruuna-basilikaraviolit",
+        "Keitto: Paahdettua paprikakeittoa",
+        "Lounas: Kananpoikaa provencale",
+        "Lounas: Paahdettua perunaa",
+        "Lounas: Parsarisotto",
+        "Lounas: Caponataa (Kasvismuhennos)",
         "Lounas: Kasvisvaihtoehto",
-        "Lounas: Emilian punajuuripastaa",
+        "Lounas: Mexican kasvipihvit & metsäsienikastiketta",
         "Lounas: Pizza",
-        "Lounas: Pizza Margherita & Pizza Pepperonia",
-        "Jälkiruoka: Puolukkapaistosta, suolakinuskilla & kermavaahdolla"
+        "Lounas: Pizza Margherita & Pepperoni",
+        "Jälkiruoka: Mansikka-ricottamoussea"
       ],
       "virhe": null
     },
@@ -61,30 +63,23 @@
       "url": "https://ravintolafactory.com/lounasravintolat/ravintolat/helsinki-pitajanmaki/",
       "auki": "10:00–14:00",
       "hinta": "13,20 €",
-      "paiva": "3.7.2026",
-      "ruoat": [
-        "Kermainen lohikeitto",
-        "Rapeat paneroidut porsaanleikkeet (M) bearnaisekastike (VL+G) annanperunat",
-        "Täyteläinen Butter Chicken paahdetuilla cashewpähkinöillä (L+G+VS+sis.pähkinä) basmatiriisi",
-        "Kebab-jalopeno-sipulipizza tuoreella rucolalla",
-        "Bataatti-lehtikaali curry kauraproteiini-suikaleilla ja tuoreella korianterilla",
-        "Leivoslajitelma",
-        "Henkilökuntamme auttaa mielellään allergeeneihin ja raaka-aineisiin liittyvissä kysymyksissä."
-      ],
-      "virhe": null
+      "paiva": "6.7.2026",
+      "ruoat": [],
+      "virhe": "Päivän listaa ei löydy"
     },
     {
       "nimi": "Ravintola Valaja",
       "url": "https://www.sodexo.fi/ravintolat/ravintola-valaja",
       "auki": "10:30–13:00",
       "hinta": "14,00 €",
-      "paiva": "3.7.2026",
+      "paiva": "6.7.2026",
       "ruoat": [
-        "Buffet: Korean Fried Chicken, marinoituja kasviksia, jasminriisiä & tuoreita yrttejä *pyydettäessä gluteeniton*",
-        "Buffet: Mozzarellalla gratinoitua munakoisoa",
-        "Deli Salaatti: Valajan Caesar salaatti vaihtuvilla proteiineilla. Joka päivä vähintään 2 erilaista proteiinia",
-        "Päivän kasviskeitto: maito",
-        "From our bakery: Banaanirahkaa & suklaakastiketta, sekä vastuullista kahvia ja teetä"
+        "Päivän kasviskeitto: Miso-Kurpitsakeitto",
+        "Deli Salaatti: Delisalaatti vaihtuvista & monipuolisista kasviksista ja joka päivä vähintään 2 erillaista proteiinia",
+        "Lautaselta: Punainen thai curry kananpojasta jasminriisillä & tuoreilla yrteillä",
+        "Lautaselta: Punainen thai curry tofulla & cashew-pähkinöillä, jasminriisiä & tuoreita yrttejä",
+        "From our bakery: Vaniljajäätelöä, sitrussorbettia & vastuullista kahvia sekä teetä",
+        "From the bean: Kahvi ja tee"
       ],
       "virhe": null
     },
@@ -93,7 +88,7 @@
       "url": "https://www.ravintolatali.fi/lounas",
       "auki": "11:00–14:00",
       "hinta": "15,00 €",
-      "paiva": "3.7.2026",
+      "paiva": "6.7.2026",
       "ruoat": [
         "(Ruokalista julkaistaan kuvana – katso ravintolan sivu)"
       ],
