@@ -24,6 +24,14 @@ HEADERS = {
 }
 TIMEOUT = 20
 
+# Loma-/sulkemistekstien tunnistus (jaettu useamman scraperin kesken)
+HOLIDAY_RE = re.compile(
+    r"(kes[äa]loma|kes[äa]tau|lomalla|suljettu|kiinni|"
+    r"palvelemme\s+j[äa]lleen|tervetuloa\s+j[äa]lleen|avaamme\s+j[äa]lleen|"
+    r"n[äa]hd[äa][äa]n\s+taas|avataan\s+taas)",
+    re.IGNORECASE,
+)
+
 
 def fetch_html(url):
     s = requests.Session()
@@ -124,10 +132,11 @@ def scrape_iss(nimi, url, auki, hinta):
             r["virhe"] = "Päivän listaa ei löydy"
             return r
 
-        # Etsi tänään-osio: teksti alkaa "Lounas"-kategoriasta
-        # ja päättyy kun tulee "L = Laktoositon" tai vastaava
         rivit = [rivi.strip() for rivi in teksti.split("\n") if rivi.strip()]
-        
+
+        # TURVALLISUUSPERIAATE: menu on aina etusijalla. Kerätään ruoat ensin,
+        # ja vasta jos oikeaa menua EI löydy, tarkistetaan onko kyse lomasta.
+        # Näin avoin ravintola ei voi koskaan mennä rikki loma-tunnistuksen takia.
         current_kat = None
         ruoat = []
         keraysta = False
@@ -155,7 +164,24 @@ def scrape_iss(nimi, url, auki, hinta):
             if current_kat and len(rivi) > 4:
                 ruoat.append(f"{current_kat}: {rivi}")
 
-        r["ruoat"] = ruoat
+        # Jos saatiin oikea menu → palautetaan se normaalisti (kuten ennenkin).
+        if ruoat:
+            r["ruoat"] = ruoat
+            return r
+
+        # Menua EI löytynyt. Nyt – ja vain nyt – katsotaan onko sivu lomalla.
+        # Vaaditaan lomasana JA päivämäärä samalla rivillä, jotta satunnainen
+        # "kesä"- tai "suljettu"-sana footerissa ei aiheuta väärää lomamerkintää.
+        note = None
+        for rv in rivit:
+            if HOLIDAY_RE.search(rv) and re.search(r"\d{1,2}\.\d{1,2}", rv) \
+               and 10 < len(rv) < 160:
+                note = rv
+                break
+        if note:
+            r["ruoat"] = [note]
+        else:
+            r["virhe"] = "Päivän listaa ei löydy"
     except Exception as e:
         r["virhe"] = str(e)
     return r
@@ -163,6 +189,19 @@ def scrape_iss(nimi, url, auki, hinta):
 
 # ── 5. Lasihelmi (Compass Group) ─────────────────────────────────────────────
 # Rakenne: h3 "Tiistai 12.5.2026" → section > h4 (buffet-otsikko) + ul > li (ruoat)
+# Kesälomalla päivän h3:a ei ole, vaan sivulla on lomailmoitus – poimitaan se.
+def extract_holiday_note(soup):
+    """Etsii sivun tekstistä lomaan/sulkemiseen liittyvät lauseet ja
+    palauttaa niistä lyhyen viestin, tai None. Ajetaan vain kun päivän
+    varsinaista listaa ei löytynyt, joten tämä ei voi häiritä normaalia menua."""
+    for tag in soup.find_all(["p", "div", "span", "li", "h4"]):
+        t = clean(tag.get_text())
+        # Vaaditaan sekä lomasana ETTÄ päivämäärä, jotta viesti on konkreettinen
+        # eikä satunnainen sana osu vahingossa.
+        if 10 < len(t) < 200 and HOLIDAY_RE.search(t) and re.search(r"\d{1,2}\.\d{1,2}", t):
+            return t
+    return None
+
 def scrape_lasihelmi():
     url = "https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/helsinki/lasihelmi/"
     r = base("Lasihelmi", url, "10:30–13:00", "13,00 €")
@@ -174,7 +213,12 @@ def scrape_lasihelmi():
                 paiva_h3 = h3
                 break
         if not paiva_h3:
-            r["virhe"] = "Päivän listaa ei löydy"
+            # Ei päivän listaa – tarkista onko kyseessä loma
+            note = extract_holiday_note(soup)
+            if note:
+                r["ruoat"] = [note]
+            else:
+                r["virhe"] = "Päivän listaa ei löydy"
             return r
 
         ruoat = []

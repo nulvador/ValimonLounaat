@@ -458,7 +458,7 @@ function parseItem(str) {
 // Data ei merkitse lomaa erikseen, joten päättely tehdään sisällöstä.
 function detectHoliday(r) {
   if (r.virhe) return null;
-  const HOLIDAY_RE = /(kiinni|suljettu|lomalla|kesäloma|kesätauko|tervetuloa\s+jälleen|avaamme|avataan\s+taas|palaamme)/i;
+  const HOLIDAY_RE = /(kiinni|suljettu|loma(lla|ile|a|n)?|kes[äa]tau|kes[äa]loma|tervetuloa\s+jälleen|palvelemme\s+jälleen|avaamme\s+jälleen|avataan\s+taas|nähdään\s+taas|palaamme)/i;
   // Lyhyt lista, jossa jokin rivi kertoo sulkemisesta = todennäköisesti loma
   const hits = r.ruoat.filter(it => HOLIDAY_RE.test(it));
   if (hits.length > 0 && r.ruoat.length <= 3) {
