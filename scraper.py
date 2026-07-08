@@ -127,12 +127,34 @@ def scrape_iss(nimi, url, auki, hinta):
                  "Viikon ruokalista", "Päivän ruokalista", "Tulosta ruokalista",
                  "Edellinen viikko", "Seuraava viikko", "Maanantai", "Tiistai",
                  "Keskiviikko", "Torstai", "Perjantai", "Tänään"}
+        # Footer-osion tunnusmerkit: jos näihin törmätään keräyksen aikana,
+        # lopetetaan – kyseessä ei ole enää ruoka vaan yhteystiedot/markkinointi.
+        FOOTER_STOP = ("myyntipalvelun", "puhelinnumero", "@iss.fi", "instagram",
+                       "kokoustarjoilu", "oivallista", "kokoustilat", "yhteystiedot",
+                       "avoimet työpaikat", "tietosuoja", "saavutettavuus",
+                       "hyvinvointia", "kansainvälinen kokemus")
 
         if "Ruokalistaa ei löytynyt" in teksti:
             r["virhe"] = "Päivän listaa ei löydy"
             return r
 
         rivit = [rivi.strip() for rivi in teksti.split("\n") if rivi.strip()]
+
+        # LOMATARKISTUS: ISS-sivu näyttää lomalla erillisen "SULJETTU"-rivin
+        # (omana rivinään) menun sijaan. Tätä riviä EI ole avoimena päivänä,
+        # joten tarkistus on turvallinen eikä voi katkaista normaalia menua.
+        # Aukiolotietojen "Lounas 10.30-13.30" ei ole menu, joten ilman tätä
+        # keräys käynnistyisi väärin ja haalisi footer-roskaa.
+        on_suljettu = any(rv.strip().upper() == "SULJETTU" for rv in rivit)
+        if on_suljettu:
+            note = None
+            for rv in rivit:
+                if HOLIDAY_RE.search(rv) and re.search(r"\d{1,2}\.\d{1,2}", rv) \
+                   and 10 < len(rv) < 160:
+                    note = rv
+                    break
+            r["ruoat"] = [note] if note else ["Ravintola on kesätauolla."]
+            return r
 
         # TURVALLISUUSPERIAATE: menu on aina etusijalla. Kerätään ruoat ensin,
         # ja vasta jos oikeaa menua EI löydy, tarkistetaan onko kyse lomasta.
@@ -152,6 +174,10 @@ def scrape_iss(nimi, url, auki, hinta):
                 if keraysta:
                     break
                 continue
+            # Lopeta myös selkeisiin footer-merkkeihin (yhteystiedot yms.),
+            # jotta aukiolo-osion jälkeinen roska ei päädy menuun.
+            if keraysta and any(f in rivi.lower() for f in FOOTER_STOP):
+                break
             if not keraysta:
                 continue
             # Suodata hinnat kuten "13,60 €"
@@ -188,18 +214,30 @@ def scrape_iss(nimi, url, auki, hinta):
 
 
 # ── 5. Lasihelmi (Compass Group) ─────────────────────────────────────────────
-# Rakenne: h3 "Tiistai 12.5.2026" → section > h4 (buffet-otsikko) + ul > li (ruoat)
-# Kesälomalla päivän h3:a ei ole, vaan sivulla on lomailmoitus – poimitaan se.
-def extract_holiday_note(soup):
-    """Etsii sivun tekstistä lomaan/sulkemiseen liittyvät lauseet ja
-    palauttaa niistä lyhyen viestin, tai None. Ajetaan vain kun päivän
-    varsinaista listaa ei löytynyt, joten tämä ei voi häiritä normaalia menua."""
-    for tag in soup.find_all(["p", "div", "span", "li", "h4"]):
-        t = clean(tag.get_text())
-        # Vaaditaan sekä lomasana ETTÄ päivämäärä, jotta viesti on konkreettinen
-        # eikä satunnainen sana osu vahingossa.
-        if 10 < len(t) < 200 and HOLIDAY_RE.search(t) and re.search(r"\d{1,2}\.\d{1,2}", t):
-            return t
+# Rakenne: h3 "Keskiviikko 8.7.2026" → section > ul > li (ruoat)
+# Kesälomalla sivulla näkyy vain aukiolo + JS:llä ladattu lomabanneri, ei ruokia.
+# Lomateksti ei näy staattisessa HTML:ssä, joten se haetaan Playwrightilla
+# VAIN silloin kun oikeaa menua ei löytynyt (menu-first-turvallisuus).
+def lasihelmi_holiday_note():
+    """Hakee Lasihelmen sivun renderöitynä ja etsii lomatekstin. Palauttaa
+    viestin tai None. Ajetaan vain kun menua ei löydy, joten ei voi häiritä
+    normaalia listaa. Jos Playwright ei ole käytössä, palautetaan None."""
+    url = "https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/helsinki/lasihelmi/"
+    try:
+        from playwright.sync_api import sync_playwright
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            page = browser.new_page()
+            page.goto(url)
+            page.wait_for_timeout(4000)
+            teksti = page.inner_text("body")
+            browser.close()
+        for rv in (x.strip() for x in teksti.split("\n") if x.strip()):
+            if HOLIDAY_RE.search(rv) and re.search(r"\d{1,2}\.\d{1,2}", rv) \
+               and 10 < len(rv) < 200:
+                return rv
+    except Exception:
+        pass
     return None
 
 def scrape_lasihelmi():
@@ -212,32 +250,41 @@ def scrape_lasihelmi():
             if TODAY_STR in h3.get_text():
                 paiva_h3 = h3
                 break
-        if not paiva_h3:
-            # Ei päivän listaa – tarkista onko kyseessä loma
-            note = extract_holiday_note(soup)
-            if note:
-                r["ruoat"] = [note]
-            else:
-                r["virhe"] = "Päivän listaa ei löydy"
-            return r
 
         ruoat = []
-        for sib in paiva_h3.find_next_siblings():
-            if sib.name == "h3":
-                break
-            # Ruoat ovat section > ul > li -rakenteessa
-            for li in sib.find_all("li"):
-                t = clean(li.get_text())
-                if not t:
-                    continue
-                if "suljettu" in t.lower():
-                    r["virhe"] = "Ravintola suljettu"
-                    return r
-                # Poista allergeenimerkinnät sulkeissa lopusta
-                t = re.sub(r"\s*\([^)]*\)\s*$", "", t).strip()
-                if t:
-                    ruoat.append(t)
-        r["ruoat"] = ruoat
+        if paiva_h3:
+            for sib in paiva_h3.find_next_siblings():
+                if sib.name == "h3":
+                    break
+                # Ruoat ovat section > ul > li -rakenteessa
+                for li in sib.find_all("li"):
+                    t = clean(li.get_text())
+                    if not t:
+                        continue
+                    if "suljettu" in t.lower():
+                        r["virhe"] = "Ravintola suljettu"
+                        return r
+                    # Ohita pelkät aukiolo-/infotekstit, ei ruokia
+                    if re.search(r"tarjolla|aukiolo|klo\b", t, re.IGNORECASE):
+                        continue
+                    # Poista allergeenimerkinnät sulkeissa lopusta
+                    t = re.sub(r"\s*\([^)]*\)\s*$", "", t).strip()
+                    if t:
+                        ruoat.append(t)
+
+        # Menu-first: jos saatiin oikeita ruokia, palautetaan ne normaalisti.
+        if ruoat:
+            r["ruoat"] = ruoat
+            return r
+
+        # Ei ruokia (päivän h3 puuttuu TAI sen alla vain aukiolotieto).
+        # Tarkista renderöidystä sivusta onko kyseessä loma.
+        note = lasihelmi_holiday_note()
+        if note:
+            r["ruoat"] = [note]
+        else:
+            r["virhe"] = "Päivän listaa ei löydy"
+        return r
     except Exception as e:
         r["virhe"] = str(e)
     return r

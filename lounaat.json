@@ -1,5 +1,5 @@
 {
-  "paivitetty": "2026-07-08T10:00:35.292560",
+  "paivitetty": "2026-07-08T10:54:45.609602",
   "ravintolat": [
     {
       "nimi": "Lasihelmi",
@@ -7,7 +7,9 @@
       "auki": "10:30–13:00",
       "hinta": "13,00 €",
       "paiva": "8.7.2026",
-      "ruoat": [],
+      "ruoat": [
+        "Kesälomaa vietämme 6.7-2.8.2026 välisen ajan."
+      ],
       "virhe": null
     },
     {
@@ -17,24 +19,7 @@
       "hinta": "13,40 €",
       "paiva": "8.7.2026",
       "ruoat": [
-        "Lounas: Ravintolan myyntipalvelun puhelinnumero:",
-        "Lounas: 050 400 9465",
-        "Lounas: fero@iss.fi",
-        "Lounas: Ravintolan Instagram:",
-        "Lounas: @ravintolafero",
-        "Lounas: Fero kokoustarjoilu valikoima 2025",
-        "Lounas: OIVAllista tarjontaa ISS-ravintoloissa",
-        "Lounas: Valimotie 9-11 kokoustilat",
-        "Lounas: Terveellinen lounas tukee hyvinvointia",
-        "Lounas: Kansainvälinen kokemus,",
-        "Lounas: skandinaavinen näkemys,",
-        "Lounas: paikallinen elämys​",
-        "Lounas: Yhteystiedot",
-        "Lounas: Avoimet työpaikat",
-        "Lounas: ISS yrityksenä",
-        "Lounas: OIVA Raportit",
-        "Lounas: Tietosuojaseloste",
-        "Lounas: Saavutettavuusseloste"
+        "Ravintola Fero on kesätauolla 6.7-2.8 välisenä aikana."
       ],
       "virhe": null
     },
