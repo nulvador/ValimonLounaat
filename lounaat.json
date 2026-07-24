@@ -1,12 +1,12 @@
 {
-  "paivitetty": "2026-07-22T10:08:32.073719",
+  "paivitetty": "2026-07-24T10:02:03.183071",
   "ravintolat": [
     {
       "nimi": "Lasihelmi",
       "url": "https://www.compass-group.fi/ravintolat-ja-ruokalistat/foodco/kaupungit/helsinki/lasihelmi/",
       "auki": "10:30–13:00",
       "hinta": "13,00 €",
-      "paiva": "22.7.2026",
+      "paiva": "24.7.2026",
       "ruoat": [
         "Kesälomaa vietämme 6.7-2.8.2026 välisen ajan."
       ],
@@ -17,7 +17,7 @@
       "url": "https://ravintolapalvelut.iss.fi/fero/",
       "auki": "10:30–13:30",
       "hinta": "13,40 €",
-      "paiva": "22.7.2026",
+      "paiva": "24.7.2026",
       "ruoat": [
         "Ravintola Fero on kesätauolla 6.7-2.8 välisenä aikana."
       ],
@@ -28,18 +28,18 @@
       "url": "https://ravintolapalvelut.iss.fi/ravintola-fucina/",
       "auki": "10:30–13:30",
       "hinta": "13,90 €",
-      "paiva": "22.7.2026",
+      "paiva": "24.7.2026",
       "ruoat": [
-        "Keitto: Juuresosekeittoa primavera",
-        "Lounas: Chorizopyörykät & Arrabiattakastiketta",
-        "Lounas: Täytetyt kesäkurpitsat curry-kanatäyteellä",
-        "Lounas: Salviavoissa paistettuja perunagnocceja",
-        "Lounas: Kasvisgratiinia Verdure",
+        "Keitto: Sitruunainen parsakaalikeitto",
+        "Lounas: Savulohi-katkarapupasta",
+        "Lounas: Halloumilla täytetyt paprikat",
+        "Lounas: Pastaa",
+        "Lounas: Punajuuri tuorepasta",
         "Lounas: Kasvisvaihtoehto",
-        "Lounas: Caponataa (Kasvismuhennos)",
+        "Lounas: Palermon pasta",
         "Lounas: Pizza",
-        "Lounas: Pizza Margherita & Pizza Salmone",
-        "Jälkiruoka: Talon mustikkapiirakka"
+        "Lounas: Pizza Margherita & Pizza Pepperoni",
+        "Jälkiruoka: Jäätelöbaari"
       ],
       "virhe": null
     },
@@ -48,13 +48,15 @@
       "url": "https://ravintolafactory.com/lounasravintolat/ravintolat/helsinki-pitajanmaki/",
       "auki": "10:00–14:00",
       "hinta": "13,20 €",
-      "paiva": "22.7.2026",
+      "paiva": "24.7.2026",
       "ruoat": [
-        "Fenkolisosekeitto",
-        "Tee-se-itse BBQ-pekonihampurilaiset, pihvi (M+G+VS), sämpylä (VE) ranskalaiset (VE+G) marinoitu sipuli (VE+G) cheddarjuustokastike (L+G) tzatziki (L+G+VS) suolakurkku",
-        "Paahdettua kanan paistileikettä Cafe de paris -voisulalla (L+G+VS) basmatiiriisi (VE+G) tzatziki",
-        "Talon kasvis-Härkispihvit chiliöljyllä",
-        "Omena-marjacrumble (L) vaniljakastike"
+        "Kermainen lohikeitto",
+        "Rapeaksi paistetut paneroidut kanan sisäfileet (M) curry-majoneesi (VE+G+VS) valkosipuli-kermaperunat",
+        "Yön yli haudutettua porsaan ulkofilettä täyteläisessä Lyonin ranskankermakastikkeessa (L+G+VS) riisi",
+        "Kinkku-aurajuusto-ananaspizza tuoreella rucolalla",
+        "Wokattuja kasviksia kaurasuikaleilla valkosipuli-yrttiglaseerauksella",
+        "Minttusuklaamousse Oreo-kekseillä",
+        "Henkilökuntamme auttaa mielellään allergeeneihin ja raaka-aineisiin liittyvissä kysymyksissä."
       ],
       "virhe": null
     },
@@ -63,7 +65,7 @@
       "url": "https://www.sodexo.fi/ravintolat/ravintola-valaja",
       "auki": "10:30–13:00",
       "hinta": "14,00 €",
-      "paiva": "22.7.2026",
+      "paiva": "24.7.2026",
       "ruoat": [],
       "virhe": "Päivän listaa ei löydy"
     },
@@ -72,7 +74,7 @@
       "url": "https://www.ravintolatali.fi/lounas",
       "auki": "11:00–14:00",
       "hinta": "15,00 €",
-      "paiva": "22.7.2026",
+      "paiva": "24.7.2026",
       "ruoat": [
         "(Ruokalista julkaistaan kuvana – katso ravintolan sivu)"
       ],
